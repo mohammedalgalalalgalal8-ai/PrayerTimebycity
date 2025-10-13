@@ -1,0 +1,113 @@
+
+ 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #f3f2f3;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background-color: #6b7c2b;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      letter-spacing: 0.5px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .card-custom {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .btn-main {
+      background-color: #6b7c2b;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-main:hover {
+      background-color: #5b6b25;
+      transform: scale(1.03);
+    }
+
+    .main-time {
+      background-color: #6b7c2b;
+      color: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .main-time h4 {
+      margin: 0;
+    }
+
+    .countdown {
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .time-box {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .time-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .time-box i {
+      font-size: 1.8rem;
+      color: #6b7c2b;
+      margin-bottom: 5px;
+    }
+
+    .city {
+      color: #1a4d0d;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .date {
+      color: #666;
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #6b7c2b;
+      color: #fff;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      border-top: 2px solid #5b6b25;
+    }
+
+    footer span {
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مواقيت الصلاة</title>
+
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+
+  <header>مواقيت الصلاة</header>
+
+  <main class="container py-4">
+
+    <div class="card-custom p-4 mb-4">
+      <h3 class="text-center fw-bold mb-3" >ابحث عن مدينتك</h3>
+      <div class="row g-2">
+        <div class="col-lg-7 col-md-12">
+          <input type="text" class="form-control" placeholder="ادخل اسم المدينة" id="inputcity">
+        </div>
+        <div class="col-lg-5 col-md-12 d-flex flex-wrap gap-2">
+          <button class="btn btn-main flex-fill"  id="btnsearch">
+            <i class="bi bi-search"></i> بحث
+          </button>
+          <button class="btn btn-outline-success flex-fill " id="locationbtn">
+            <i class="bi bi-geo-alt"></i> حدد موقعي
+          </button>
+          <button class="btn btn-outline-secondary flex-fill">
+            <i class="bi bi-arrow-clockwise"></i> تحديث
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-custom p-4 mb-4 w-100">
+      <h4 class="city mb-1">صنعاء</h4>
+      <p class="date mb-3">الجمعة، 10 أكتوبر 2025</p>
+
+     <div class="main-time">
+        <h4>الفجر</h4>
+        <div class="countdown">00 : 00 : 00</div>
+        <small>يبقى على صلاة الفجر</small>
+      </div>
+
+   
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="time-box">
+            <i class="bi bi-cloud-sun"></i>
+            <small>الفجر</small>
+            <span>04:28</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="time-box">
+            <i class="bi bi-sunrise"></i>
+            <small>الشروق</small>
+            <span>05:50</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="time-box">
+            <i class="bi bi-brightness-high"></i>
+            <small>الظهر</small>
+            <span>11:55</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="time-box">
+            <i class="bi bi-brightness-alt-high"></i>
+            <small>العصر</small>
+            <span>03:15</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="time-box">
+            <i class="bi bi-moon"></i>
+            <small>المغرب</small>
+            <span>06:02</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="time-box">
+            <i class="bi bi-stars"></i>
+            <small>العشاء</small>
+            <span>07:20</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-muted mt-3 text-center">الوقت الآن في صنعاء 10:15:21 PM</p>
+    </div>
+
+  </main>
+
+
+  <footer>
+     
+    All Rights Reserved | Design &amp; Code 2025 ©️ By
+   <span>Mohammed Algalal</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="index.js"></script>
+
+</body>
+</html>
