@@ -23,42 +23,58 @@
     return [parseInt(m[1], 10), parseInt(m[2], 10)];
   }
 
-  async function getPrayerTimes(city) {
-    try {
-      const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city)}&country=YE&method=3`);
-      const data = await res.json();
+async function getPrayerTimes(city) {
+  try {
+ 
+    const geoRes = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`
+    );
+    const geoData = await geoRes.json();
 
-
-      if (!data || data.code !== 200 || !data.data || !data.data.timings) {
-        alert("المدينة غير صحيحة، حاول مرة أخرى");
-        return;
-      }
-
-      const timings = data.data.timings;
-      currentTimings = timings;
-
-      const date = data.data.date.readable;
-      const hijri = data.data.date.hijri.date;
-      const weekday = data.data.date.hijri.weekday.ar;
-
-      cityElem.textContent = city;
-      dateElem.textContent = `${weekday} ${hijri} هـ الموافق ${date}`;
-
-      const timeValues = [
-        timings.Fajr, timings.Sunrise, timings.Dhuhr,
-        timings.Asr, timings.Maghrib, timings.Isha
-      ];
-
-      timeBoxes.forEach((box, i) => box.textContent = timeValues[i] ?? '--:--');
-
-      startCurrentTimeUpdater(city);
-      determineNextPrayer(timings);
-
-    } catch (err) {
-      console.error(err);
-      alert("حدث خطأ أثناء جلب بيانات المدينة، حاول مرة أخرى");
+    if (!geoData || geoData.length === 0) {
+      alert("❌  تأكد من كتابة الاسم بشكل صحيح ");
+      return;
     }
+
+    // 🔹 نأخذ أول نتيجة
+    const { lat, lon, display_name } = geoData[0];
+
+    // 🔹 نستخدم الإحداثيات لجلب أوقات الصلاة من Aladhan
+    const res = await fetch(
+      `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=3`
+    );
+    const data = await res.json();
+
+    if (!data || data.code !== 200 || !data.data || !data.data.timings) {
+      alert("⚠️ تعذر جلب أوقات الصلاة، حاول مرة أخرى");
+      return;
+    }
+
+    const timings = data.data.timings;
+    currentTimings = timings;
+
+    const date = data.data.date.readable;
+    const hijri = data.data.date.hijri.date;
+    const weekday = data.data.date.hijri.weekday.ar;
+
+    cityElem.textContent = display_name;
+    dateElem.textContent = `${weekday} ${hijri} هـ الموافق ${date}`;
+
+    const timeValues = [
+      timings.Fajr, timings.Sunrise, timings.Dhuhr,
+      timings.Asr, timings.Maghrib, timings.Isha
+    ];
+
+    timeBoxes.forEach((box, i) => (box.textContent = timeValues[i] ?? "--:--"));
+
+    startCurrentTimeUpdater(display_name);
+    determineNextPrayer(timings);
+  } catch (err) {
+    console.error(err);
+    alert("حدث خطأ أثناء جلب بيانات المدينة، حاول مرة أخرى");
   }
+}
+
 
   async function getPrayerTimesByLocation(lat, lon) {
     try {
